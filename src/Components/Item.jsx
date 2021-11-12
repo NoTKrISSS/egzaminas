@@ -12,7 +12,9 @@ function Item({ data, modal, remove }) {
       <button className="btn btn-primary" onClick={showEdit}>
         Edit
       </button>
-      <button className="btn btn-primary">Delete</button>
+      <button className="btn btn-primary" onClick={() => remove(data.id)}>
+        Delete
+      </button>
     </tr>
   );
 }
