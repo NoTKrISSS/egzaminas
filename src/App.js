@@ -3,6 +3,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import List from "./Components/List";
 import Modal from "./Components/Modal";
+import Create from "./Components/Create";
 
 function App() {
   const [table, setTable] = useState([]);
@@ -43,6 +44,14 @@ function App() {
     });
   };
 
+  //Create React
+  const create = (item) => {
+    axios.post("http://localhost:3003/lentele", item).then((res) => {
+      console.log(res.data);
+      setLastUpdate(Date.now());
+    });
+  };
+
   const modal = (item) => {
     setShowModal(true);
     setModalInputs(item);
@@ -54,6 +63,7 @@ function App() {
 
   return (
     <div className="App">
+      <Create create={create} />
       <div className="container">
         <div className="row justify-content-center">
           <div className="col-md-8">
@@ -74,7 +84,7 @@ function App() {
                     edit={edit}
                     remove={remove}
                   />
-                  <List table={table} modal={modal} />
+                  <List table={table} modal={modal} remove={remove} />
                 </table>
               </div>
             </div>

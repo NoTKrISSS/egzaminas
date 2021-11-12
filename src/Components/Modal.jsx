@@ -77,7 +77,7 @@ function Modal({ showModal, hide, modalInputs, edit, remove }) {
                 <input
                   className="form-control"
                   type="text"
-                  id="th1"
+                  id="name"
                   value={inputs.name}
                   onChange={(e) => control(e, "name")}
                   placeholder="Enter name"
