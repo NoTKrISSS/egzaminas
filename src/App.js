@@ -35,6 +35,13 @@ function App() {
   };
 
   //Delete React
+  const remove = (id) => {
+    setShowModal(false);
+    axios.delete("http://localhost:3003/lentele/" + id).then((res) => {
+      console.log(res.data);
+      setLastUpdate(Date.now());
+    });
+  };
 
   const modal = (item) => {
     setShowModal(true);
@@ -65,6 +72,7 @@ function App() {
                     modalInputs={modalInputs}
                     hide={hide}
                     edit={edit}
+                    remove={remove}
                   />
                   <List table={table} modal={modal} />
                 </table>
