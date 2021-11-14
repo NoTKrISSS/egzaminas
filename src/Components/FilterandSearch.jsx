@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function FilterandSearch({ nameTypes, setFilterBy }) {
+function FilterandSearch({ nameTypes, setFilterBy, reset }) {
   const [filterValue, setFilterValue] = useState("");
   // handling filter select state
   const selectFilter = (e) => {
@@ -22,6 +22,7 @@ function FilterandSearch({ nameTypes, setFilterBy }) {
           ))}
         </select>
       </div>
+      <button onClick={reset}>RESET</button>
       <div>
         <span>name: </span>
         <select name="" id=""></select>

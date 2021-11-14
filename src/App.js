@@ -88,12 +88,20 @@ function App() {
     setShowModal(false);
   };
 
+  const reset = () => {
+    setLastUpdate(Date.now());
+  };
+
   return (
     <div className="App">
       <div className="container">
         <div>
           <Create create={create} />
-          <FilterandSearch nameTypes={nameTypes} setFilterBy={setFilterBy} />
+          <FilterandSearch
+            nameTypes={nameTypes}
+            setFilterBy={setFilterBy}
+            reset={reset}
+          />
         </div>
         <div className="row justify-content-center">
           <div className="col-md-8">
