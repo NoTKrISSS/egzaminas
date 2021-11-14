@@ -8,6 +8,12 @@ function FilterandSearch({ nameTypes, setFilterBy, reset }) {
     setFilterBy(e.target.value);
     console.log(e.target.value);
   };
+
+  //reset handler
+  const resetHandler = () => {
+    reset();
+    setFilterValue(" ");
+  };
   // rendering filter select and search
   return (
     <div className="filter">
@@ -22,7 +28,7 @@ function FilterandSearch({ nameTypes, setFilterBy, reset }) {
           ))}
         </select>
       </div>
-      <button onClick={reset}>RESET</button>
+      <button onClick={resetHandler}>RESET</button>
       <div>
         <span>name: </span>
         <select name="" id=""></select>
