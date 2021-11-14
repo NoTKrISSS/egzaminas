@@ -15,16 +15,26 @@ function Create({ create }) {
   };
 
   const handleCreate = () => {
-    create(inputs);
-    setInputs({
-      name: "",
-      price: "",
-      quantity: "",
-      date: "",
-    });
+    console.log(inputs);
+    if (
+      inputs.name === "" ||
+      inputs.price === "" ||
+      inputs.date === "" ||
+      inputs.quantity === ""
+    ) {
+      console.log("no input");
+    } else {
+      create(inputs);
+      setInputs({
+        name: "",
+        price: "",
+        quantity: "",
+        date: "",
+      });
+    }
   };
   return (
-    <div className="create">
+    <form className="create">
       <div>
         <span>name: </span>
         <input
@@ -66,7 +76,7 @@ function Create({ create }) {
         />
       </div>
       <button onClick={handleCreate}>Add</button>
-    </div>
+    </form>
   );
 }
 
