@@ -1,9 +1,10 @@
-import "./App.css";
+import "./App.scss";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import List from "./Components/List";
 import Modal from "./Components/Modal";
 import Create from "./Components/Create";
+import FilterandSearch from "./Components/FilterandSearch";
 
 function App() {
   const [table, setTable] = useState([]);
@@ -15,6 +16,9 @@ function App() {
     quantity: "",
     date: "",
   });
+  const [nameTypes, setNameTypes] = useState([]);
+  const [filterBy, setFilterBy] = useState("");
+
   //Read React
   useEffect(() => {
     axios
@@ -24,6 +28,29 @@ function App() {
       })
       .catch((err) => console.log(err));
   }, [lastUpdate]);
+
+  //FilterBy name React
+  useEffect(() => {
+    if (filterBy) {
+      axios
+        .get("http://localhost:3003/lentele-filter/" + filterBy)
+        .then((res) => {
+          setTable(res.data);
+        })
+        .catch((err) => console.log(err));
+    }
+  }, [filterBy]);
+
+  //Distinct names React
+  useEffect(() => {
+    axios
+      .get("http://localhost:3003/lentele-name")
+      .then((res) => {
+        setNameTypes(res.data);
+      })
+      .catch((err) => console.log(err));
+  }, [lastUpdate]);
+
   //Update React
   const edit = (item, id) => {
     setShowModal(false);
@@ -63,8 +90,11 @@ function App() {
 
   return (
     <div className="App">
-      <Create create={create} />
       <div className="container">
+        <div>
+          <Create create={create} />
+          <FilterandSearch nameTypes={nameTypes} setFilterBy={setFilterBy} />
+        </div>
         <div className="row justify-content-center">
           <div className="col-md-8">
             <div className="card">

@@ -32,6 +32,7 @@ function Create({ create }) {
           id="name"
           value={inputs.name}
           onChange={(e) => formControl(e, "name")}
+          required
         />
       </div>
       <div>
@@ -41,6 +42,7 @@ function Create({ create }) {
           id="price"
           value={inputs.price}
           onChange={(e) => formControl(e, "price")}
+          required
         />
       </div>
       <div>
@@ -50,6 +52,7 @@ function Create({ create }) {
           id="quantity"
           value={inputs.quantity}
           onChange={(e) => formControl(e, "quantity")}
+          required
         />
       </div>
       <div>
@@ -59,6 +62,7 @@ function Create({ create }) {
           id="date"
           value={inputs.date}
           onChange={(e) => formControl(e, "date")}
+          required
         />
       </div>
       <button onClick={handleCreate}>Add</button>
