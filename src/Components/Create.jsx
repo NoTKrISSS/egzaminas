@@ -16,6 +16,7 @@ function Create({ create }) {
 
   const handleCreate = () => {
     console.log(inputs);
+
     if (
       inputs.name === "" ||
       inputs.price === "" ||

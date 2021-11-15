@@ -8,7 +8,13 @@ function Item({ data, modal, remove }) {
       <td>{data.name}</td>
       <td>{data.price}</td>
       <td>{data.quantity}</td>
-      <td>{data.date.slice(0, 10)}</td>
+      <td>
+        {new Date(data.date).toLocaleDateString("fr-CA", {
+          year: "numeric",
+          month: "2-digit",
+          day: "2-digit",
+        })}
+      </td>
       <button className="btn btn-primary" onClick={showEdit}>
         Edit
       </button>
